@@ -1,9 +1,11 @@
 package com.example.keyboard
 
+import android.content.Context
 import android.graphics.drawable.Icon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,16 +31,17 @@ class MainActivity : AppCompatActivity() {
         var transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.mainFragment, allFragment).commit()
 
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            var newTransaction = fragmentManager.beginTransaction()
-            when(it.itemId){
-                R.id.allItem -> newTransaction.replace(R.id.mainFragment, allFragment).commit()
-                R.id.categoryItem -> newTransaction.replace(R.id.mainFragment, categoryFragment).commit()
-                else -> newTransaction.replace(R.id.mainFragment, settingFragment).commit()
-            }
-            return@setOnNavigationItemSelectedListener true
-        }
+        bottomNavigationView.setOnNavigationItemSelectedListener(clickListener)
     }
 
+    val clickListener: BottomNavigationView.OnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
+        var newTransaction = fragmentManager.beginTransaction()
+        when(it.itemId){
+            R.id.allItem -> newTransaction.replace(R.id.mainFragment, allFragment).commit()
+            R.id.categoryItem -> newTransaction.replace(R.id.mainFragment, categoryFragment).commit()
+            else -> newTransaction.replace(R.id.mainFragment, settingFragment).commit()
+        }
+        return@OnNavigationItemSelectedListener true
+    }
 }
 
