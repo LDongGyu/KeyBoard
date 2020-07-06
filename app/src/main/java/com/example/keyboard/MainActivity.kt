@@ -1,9 +1,14 @@
 package com.example.keyboard
 
+import android.graphics.drawable.Icon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.keyboard.KeyList.KeyItem
+import com.example.keyboard.KeyList.KeyListViewAdapter
 import com.example.keyboard.fragment.AllFragment
 import com.example.keyboard.fragment.CategoryFragment
 import com.example.keyboard.fragment.SettingFragment
