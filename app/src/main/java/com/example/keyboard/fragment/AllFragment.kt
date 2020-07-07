@@ -33,7 +33,6 @@ class AllFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var data = initData()
-
         var keyListAdapter = KeyListViewAdapter(data)
 
         var view = inflater.inflate(R.layout.fragment_all,null) // 뷰를 먼저 만들고
