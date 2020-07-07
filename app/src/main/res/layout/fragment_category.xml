@@ -7,6 +7,9 @@
     <ExpandableListView
         android:id="@+id/categoryListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:childDivider="@null"
+        android:groupIndicator="@null"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

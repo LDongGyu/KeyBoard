@@ -32,13 +32,7 @@ class AllFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        var icon = Icon.createWithResource(context,R.drawable.logo)
-        var temp1 = KeyItem(icon,"네이버","홈페이지")
-        var temp2 = KeyItem(icon,"카카오","SNS")
-        var temp3 = KeyItem(icon, "인스타그램", "SNS")
-        var temp4 = KeyItem(icon, "본스", "피씨방")
-        var data = listOf(temp1,temp2,temp3,temp4)
+        var data = initData()
 
         var keyListAdapter = KeyListViewAdapter(data)
 
@@ -48,5 +42,16 @@ class AllFragment : Fragment() {
         keyList.adapter = keyListAdapter // 데이터 등록하고 return
 
         return view
+    }
+
+    fun initData(): List<KeyItem>{
+        var icon = Icon.createWithResource(context,R.drawable.logo)
+        var temp1 = KeyItem(icon,"네이버","홈페이지")
+        var temp2 = KeyItem(icon,"카카오","SNS")
+        var temp3 = KeyItem(icon, "인스타그램", "SNS")
+        var temp4 = KeyItem(icon, "본스", "피씨방")
+        var data = listOf(temp1,temp2,temp3,temp4)
+
+        return data
     }
 }
