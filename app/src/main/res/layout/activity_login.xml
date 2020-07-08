@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appLogoLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/loginLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/logoImg"
+                android:layout_width="78dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appNameTxt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/appNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Key Diary"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logoImg"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loginLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appLogoLayout"
+            app:layout_constraintBottom_toTopOf="@id/buttonLayout">
+            <TextView
+                android:id="@+id/IDtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID "
+                android:layout_marginBottom="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toEndOf="@+id/IDtxt"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                android:id="@+id/idEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID를 입력해주세요"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/IDtxt"/>
+
+            <TextView
+                android:id="@+id/PWtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PW "
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/idEditTxt"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toEndOf="@+id/PWtxt"
+                app:layout_constraintTop_toBottomOf="@id/idEditTxt"/>
+            <EditText
+                android:id="@+id/pwEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PW를 입력해주세요"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/PWtxt"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginLayout"
+            app:layout_constraintBottom_toTopOf="@id/socialLoginLayout">
+
+            <Button
+                android:id="@+id/IdPwFindBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:paddingHorizontal="16dp"
+                android:text="ID / PW 찾기"
+                android:textColor="#FFFFFF"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/SignUpBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원가입"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:paddingHorizontal="28dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintStart_toEndOf="@+id/IdPwFindBtn"
+                app:layout_constraintEnd_toStartOf="@id/SignInBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            <Button
+                android:id="@+id/SignInBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그인"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:paddingHorizontal="32dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/socialLoginLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonLayout"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <Button
+                android:id="@+id/googleBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Google"
+                android:background="#ECECEC"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/kakaoBtn"/>
+            <Button
+                android:id="@+id/kakaoBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Kakao"
+                android:background="#FCE811"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/googleBtn"
+                app:layout_constraintBottom_toTopOf="@id/githubBtn"/>
+            <Button
+                android:id="@+id/githubBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Github"
+                android:background="#333333"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/kakaoBtn"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
