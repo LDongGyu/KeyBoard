@@ -15,6 +15,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/itemFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:src="@drawable/create"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintTop_toTopOf="@id/mainFab"
+        app:layout_constraintBottom_toBottomOf="@+id/mainFab"
+        app:layout_constraintStart_toStartOf="@id/mainFab"
+        app:layout_constraintEnd_toEndOf="@id/mainFab" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/categoryFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:src="@drawable/category"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintTop_toTopOf="@id/mainFab"
+        app:layout_constraintBottom_toBottomOf="@+id/mainFab"
+        app:layout_constraintStart_toStartOf="@id/mainFab"
+        app:layout_constraintEnd_toEndOf="@id/mainFab"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/add"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="4dp"
+        app:borderWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
