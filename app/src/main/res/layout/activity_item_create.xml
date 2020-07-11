@@ -171,7 +171,7 @@
                 android:id="@+id/etcTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사이트 명 "
+                android:text="비고 "
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -186,7 +186,7 @@
                 android:id="@+id/etcEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="사이트명을 입력해주세요"
+                android:hint="비고"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etcTxt"/>
