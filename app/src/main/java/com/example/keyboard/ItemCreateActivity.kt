@@ -31,7 +31,6 @@ class ItemCreateActivity : AppCompatActivity() {
             editBtn.text = "수정 ON"
         }
         toggleEditText(isCanChange)
-
     }
 
     private fun toggleEditText(flag: Boolean){
