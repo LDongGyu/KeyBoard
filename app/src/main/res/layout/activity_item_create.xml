@@ -233,6 +233,20 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="32dp"
+            android:background="@color/colorAccent"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/editBtn"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
         <Button
             android:id="@+id/editBtn"
             android:layout_width="wrap_content"
