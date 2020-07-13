@@ -10,7 +10,7 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="보드 생성"
+        android:text="보드 수정"
         android:textSize="20dp"
         android:layout_marginTop="32dp"
         android:textColor="@color/colorPrimary"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintBottom_toTopOf="@id/createBtn"
+        app:layout_constraintBottom_toTopOf="@id/buttonLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -225,17 +225,51 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/createBtn"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="생성"
-        android:textSize="14dp"
-        android:textColor="#FFFFFF"
         android:layout_marginBottom="32dp"
         android:layout_marginRight="16dp"
-        android:paddingHorizontal="32dp"
-        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="32dp"
+            android:background="@color/colorAccent"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/editBtn"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/editBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정 OFF"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="32dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/saveBtn"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="32dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

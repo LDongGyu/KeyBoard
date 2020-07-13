@@ -1,6 +1,7 @@
 package com.example.keyboard.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Bundle
@@ -8,8 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.keyboard.ItemManageActivity
 import com.example.keyboard.KeyList.KeyItem
 import com.example.keyboard.KeyList.KeyListViewAdapter
 
@@ -35,15 +38,21 @@ class AllFragment : Fragment() {
         var data = initData()
         var keyListAdapter = KeyListViewAdapter(data)
 
-        var view = inflater.inflate(R.layout.fragment_all,null) // 뷰를 먼저 만들고
+        var view = inflater.inflate(R.layout.fragment_all,container,false) // 뷰를 먼저 만들고
         var keyList = view.findViewById(R.id.allList) as RecyclerView
         keyList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+
+        keyListAdapter.setItemClickListener(object : KeyListViewAdapter.ItemClickListener{
+            override fun onClick(view: View, position: Int) {
+                startActivity(Intent(context,ItemManageActivity::class.java))
+            }
+        })
         keyList.adapter = keyListAdapter // 데이터 등록하고 return
 
         return view
     }
 
-    fun initData(): List<KeyItem>{
+    private fun initData(): List<KeyItem>{
         var icon = Icon.createWithResource(context,R.drawable.logo)
         var temp1 = KeyItem(icon,"네이버","홈페이지")
         var temp2 = KeyItem(icon,"카카오","SNS")

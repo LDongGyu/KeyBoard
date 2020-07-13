@@ -1,6 +1,7 @@
 package com.example.keyboard.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ExpandableListView
 import com.example.keyboard.CategoryList.CategoryListItem
 import com.example.keyboard.CategoryList.CategoryListViewAdapter
+import com.example.keyboard.CategoryManageActivity
 
 import com.example.keyboard.R
 import kotlinx.android.synthetic.main.fragment_category.*
@@ -35,11 +37,12 @@ class CategoryFragment : Fragment() {
         var data = initData()
         var categoryListAdapter = CategoryListViewAdapter(view.context,data)
         categoryListView.setAdapter(categoryListAdapter)
+        categoryListView.setOnChildClickListener(childClickListener)
 
         return view
     }
 
-    fun initData():List<CategoryListItem>{
+    private fun initData():List<CategoryListItem>{
         var title1 = "홈페이지"
         var title2 = "PC방"
         var title3 = "회사"
@@ -56,5 +59,10 @@ class CategoryFragment : Fragment() {
 
         var data = listOf(temp1,temp2,temp3)
         return data
+    }
+
+    private val childClickListener : ExpandableListView.OnChildClickListener = ExpandableListView.OnChildClickListener { expandableListView, view, i, i2, l ->
+        startActivity(Intent(context,CategoryManageActivity::class.java))
+        return@OnChildClickListener false
     }
 }
