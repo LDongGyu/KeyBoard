@@ -1,26 +1,21 @@
 package com.example.keyboard
 
 import android.content.Intent
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.keyboard.api.DBService
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetUserData
-import com.google.gson.stream.JsonReader
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.NonCancellable.join
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.math.BigInteger
+import java.security.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,8 +41,12 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            Toast.makeText(applicationContext,pw.toMD5(),Toast.LENGTH_SHORT).show()
         }
+
     }
+
 
     private suspend fun login(id: String, pw: String): String{
         val call: Call<GetUserData> = DBServiceImpl.service.signIn(id,pw)
@@ -60,6 +59,11 @@ class LoginActivity : AppCompatActivity() {
         job.join()
 
         return statusCode
+    }
+
+    fun String.toMD5(): String {
+        val bytes = MessageDigest.getInstance("MD5").digest(this.toByteArray()).joinToString("") { "%02x".format(it) }
+        return bytes
     }
 
 }
