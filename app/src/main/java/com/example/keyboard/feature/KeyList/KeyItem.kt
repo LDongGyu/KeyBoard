@@ -1,4 +1,4 @@
-package com.example.keyboard.KeyList
+package com.example.keyboard.feature.KeyList
 
 import android.graphics.drawable.Icon
 

@@ -1,13 +1,8 @@
-package com.example.keyboard
+package com.example.keyboard.feature.Item
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.activity_item_create.*
+import com.example.keyboard.R
 
 class ItemCreateActivity : AppCompatActivity() {
 

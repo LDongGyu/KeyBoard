@@ -1,13 +1,9 @@
-package com.example.keyboard.KeyList
+package com.example.keyboard.feature.KeyList
 
-import android.content.Intent
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.keyboard.ItemManageActivity
 import com.example.keyboard.R
 
 class KeyListViewAdapter(var datas: List<KeyItem>): RecyclerView.Adapter<KeyListViewHolder>(){

@@ -1,9 +1,9 @@
-package com.example.keyboard
+package com.example.keyboard.feature.Category
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_category_create.*
+import com.example.keyboard.R
 import kotlinx.android.synthetic.main.activity_category_create.etcEditTxt
 import kotlinx.android.synthetic.main.activity_category_create.titleEditTxt
 import kotlinx.android.synthetic.main.activity_category_manage.*

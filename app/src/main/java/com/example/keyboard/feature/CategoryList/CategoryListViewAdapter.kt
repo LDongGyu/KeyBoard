@@ -1,7 +1,6 @@
-package com.example.keyboard.CategoryList
+package com.example.keyboard.feature.CategoryList
 
 import android.content.Context
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

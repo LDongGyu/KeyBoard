@@ -1,10 +1,10 @@
-package com.example.keyboard
+package com.example.keyboard.feature.Item
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.activity_item_create.*
+import com.example.keyboard.R
 import kotlinx.android.synthetic.main.activity_item_create.categorySpinner
 import kotlinx.android.synthetic.main.activity_item_create.etcEditTxt
 import kotlinx.android.synthetic.main.activity_item_create.idEditTxt

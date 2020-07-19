@@ -1,4 +1,4 @@
-package com.example.keyboard
+package com.example.keyboard.feature.SignUp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetUserData
-import kotlinx.android.synthetic.main.activity_login.*
+import com.example.keyboard.feature.MainActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.idEditTxt
 import kotlinx.android.synthetic.main.activity_sign_up.pwEditTxt
@@ -38,7 +39,8 @@ class SignUpActivity : AppCompatActivity() {
 
             Log.d("signUpLog","${id}, ${pw}, ${signUpStatus}")
             if(signUpStatus.equals("success")){
-                startActivity(Intent(applicationContext,MainActivity::class.java))
+                startActivity(Intent(applicationContext,
+                    MainActivity::class.java))
                 finish()
             }
             else{

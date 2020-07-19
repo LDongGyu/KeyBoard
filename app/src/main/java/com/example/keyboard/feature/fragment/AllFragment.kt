@@ -1,20 +1,17 @@
-package com.example.keyboard.fragment
+package com.example.keyboard.feature.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Icon
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.keyboard.ItemManageActivity
-import com.example.keyboard.KeyList.KeyItem
-import com.example.keyboard.KeyList.KeyListViewAdapter
+import com.example.keyboard.feature.Item.ItemManageActivity
+import com.example.keyboard.feature.KeyList.KeyItem
+import com.example.keyboard.feature.KeyList.KeyListViewAdapter
 
 import com.example.keyboard.R
 
@@ -44,7 +41,8 @@ class AllFragment : Fragment() {
 
         keyListAdapter.setItemClickListener(object : KeyListViewAdapter.ItemClickListener{
             override fun onClick(view: View, position: Int) {
-                startActivity(Intent(context,ItemManageActivity::class.java))
+                startActivity(Intent(context,
+                    ItemManageActivity::class.java))
             }
         })
         keyList.adapter = keyListAdapter // 데이터 등록하고 return

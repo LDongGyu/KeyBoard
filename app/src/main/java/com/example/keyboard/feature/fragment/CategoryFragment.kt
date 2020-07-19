@@ -1,20 +1,17 @@
-package com.example.keyboard.fragment
+package com.example.keyboard.feature.fragment
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ExpandableListView
-import com.example.keyboard.CategoryList.CategoryListItem
-import com.example.keyboard.CategoryList.CategoryListViewAdapter
-import com.example.keyboard.CategoryManageActivity
+import com.example.keyboard.feature.CategoryList.CategoryListItem
+import com.example.keyboard.feature.CategoryList.CategoryListViewAdapter
+import com.example.keyboard.feature.Category.CategoryManageActivity
 
 import com.example.keyboard.R
-import kotlinx.android.synthetic.main.fragment_category.*
 
 /**
  * A simple [Fragment] subclass.
@@ -62,7 +59,8 @@ class CategoryFragment : Fragment() {
     }
 
     private val childClickListener : ExpandableListView.OnChildClickListener = ExpandableListView.OnChildClickListener { expandableListView, view, i, i2, l ->
-        startActivity(Intent(context,CategoryManageActivity::class.java))
+        startActivity(Intent(context,
+            CategoryManageActivity::class.java))
         return@OnChildClickListener false
     }
 }

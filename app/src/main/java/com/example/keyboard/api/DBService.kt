@@ -1,6 +1,6 @@
 package com.example.keyboard.api
 
-import com.example.keyboard.KeyList.KeyItem
+import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.data.GetUserData
 import retrofit2.Call
 import retrofit2.http.GET

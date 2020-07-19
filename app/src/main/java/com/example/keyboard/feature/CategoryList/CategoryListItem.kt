@@ -1,4 +1,4 @@
-package com.example.keyboard.CategoryList
+package com.example.keyboard.feature.CategoryList
 
 data class CategoryListItem (
     var category: String,
