@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         categoryFab.setOnClickListener(categoryFabClickListener)
     }
 
-    val clickListener: BottomNavigationView.OnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
+    private val clickListener: BottomNavigationView.OnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         var newTransaction = fragmentManager.beginTransaction()
         when(it.itemId){
             R.id.allItem -> newTransaction.replace(R.id.mainFragment, allFragment).commit()
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         return@OnNavigationItemSelectedListener true
     }
 
-    val mainFabClickListener: View.OnClickListener = View.OnClickListener {
+    private val mainFabClickListener: View.OnClickListener = View.OnClickListener {
         if(!isOpen) { // fab이 눌리지 않았다면
             ObjectAnimator.ofFloat(itemFab, "translationY", -400f).apply { start() }
             ObjectAnimator.ofFloat(categoryFab, "translationY", -200f).apply { start() }
@@ -64,11 +64,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val itemFabClickListener: View.OnClickListener = View.OnClickListener {
+    private val itemFabClickListener: View.OnClickListener = View.OnClickListener {
         startActivity(Intent(this, ItemCreateActivity::class.java))
     }
 
-    val categoryFabClickListener: View.OnClickListener = View.OnClickListener {
+    private val categoryFabClickListener: View.OnClickListener = View.OnClickListener {
         startActivity(Intent(this, CategoryCreateActivity::class.java))
     }
 }

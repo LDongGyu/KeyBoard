@@ -17,4 +17,10 @@ interface DBService {
         @Path("id") id: String,
         @Path("pw") pw: String
     ): Call<GetUserData>
+
+    @POST("/user/signUp/{id}/{pw}")
+    fun signUp(
+        @Path("id") id: String,
+        @Path("pw") pw: String
+    ): Call<GetUserData>
 }
