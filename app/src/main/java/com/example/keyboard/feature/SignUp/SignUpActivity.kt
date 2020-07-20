@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
-import com.example.keyboard.data.GetUserData
+import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.MainActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.idEditTxt
@@ -51,7 +51,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
     private suspend fun signUp(id: String, pw: String): String{
-        val call: Call<GetUserData> = DBServiceImpl.service.signUp(id,pw.toMD5())
+        val call: Call<GetStatus> = DBServiceImpl.service.signUp(id,pw.toMD5())
         var statusCode = "default"
 
         var job = CoroutineScope(Dispatchers.IO).launch {
