@@ -26,14 +26,14 @@ interface DBService {
         @Path("pw") pw: String
     ): Call<GetStatus>
 
-    @POST("/user/signUp/{id}/{pw}")
+    @POST("/user/signUp")
     fun signUp(
         @Path("id") id: String,
         @Path("pw") pw: String
     ): Call<GetStatus>
 
-    @GET("/user/ID")
+    @GET("/user/{id}")
     fun getUserID(
-        @Body id: String
+        @Path("id") id: String
     ): Call<GetID>
 }

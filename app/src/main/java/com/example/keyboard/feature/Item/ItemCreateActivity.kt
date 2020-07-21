@@ -12,6 +12,7 @@ import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.feature.MainActivity
+import com.example.keyboard.feature.Singleton.UserInfo
 import kotlinx.android.synthetic.main.activity_item_create.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +25,7 @@ class ItemCreateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_create)
-
+        Toast.makeText(applicationContext,"${UserInfo.id}",Toast.LENGTH_SHORT).show()
         createBtn.setOnClickListener(itemCreateBtnClickListener)
     }
 
