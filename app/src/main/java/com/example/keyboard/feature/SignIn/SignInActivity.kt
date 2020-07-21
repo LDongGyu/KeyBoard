@@ -45,8 +45,9 @@ class SignInActivity : AppCompatActivity() {
 
             Log.d("loginLog","${id}, ${pw}, ${loginStatus}")
             if(loginStatus.equals("success")){
-                startActivity(Intent(applicationContext,
-                    MainActivity::class.java))
+                var intent = Intent(applicationContext, MainActivity::class.java)
+                intent.putExtra("id",id)
+                startActivity(intent)
                 finish()
             }
             else{

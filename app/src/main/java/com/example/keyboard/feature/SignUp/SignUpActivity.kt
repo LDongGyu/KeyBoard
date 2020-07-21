@@ -39,8 +39,9 @@ class SignUpActivity : AppCompatActivity() {
 
             Log.d("signUpLog","${id}, ${pw}, ${signUpStatus}")
             if(signUpStatus.equals("success")){
-                startActivity(Intent(applicationContext,
-                    MainActivity::class.java))
+                var intent = Intent(applicationContext, MainActivity::class.java)
+                intent.putExtra("id",id)
+                startActivity(intent)
                 finish()
             }
             else{

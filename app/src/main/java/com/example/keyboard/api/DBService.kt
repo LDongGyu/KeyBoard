@@ -1,5 +1,6 @@
 package com.example.keyboard.api
 
+import com.example.keyboard.data.GetID
 import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.data.GetStatus
 import retrofit2.Call
@@ -31,5 +32,8 @@ interface DBService {
         @Path("pw") pw: String
     ): Call<GetStatus>
 
-
+    @GET("/user/ID")
+    fun getUserID(
+        @Body id: String
+    ): Call<GetID>
 }

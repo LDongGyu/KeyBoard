@@ -32,7 +32,7 @@ class ItemCreateActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             var icon = Icon.createWithResource(applicationContext,R.drawable.logo)
             var data = KeyItem(icon,"네이버","홈페이지","id","pw","url","etc")
-            
+
             var signUpStatus = itemCreate(data)
 
             if(signUpStatus.equals("success")){

@@ -6,13 +6,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.keyboard.R
+import com.example.keyboard.api.DBServiceImpl
+import com.example.keyboard.data.GetID
+import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.Category.CategoryCreateActivity
 import com.example.keyboard.feature.Item.ItemCreateActivity
+import com.example.keyboard.feature.KeyList.KeyItem
+import com.example.keyboard.feature.Singleton.UserInfo
 import com.example.keyboard.feature.fragment.AllFragment
 import com.example.keyboard.feature.fragment.CategoryFragment
 import com.example.keyboard.feature.fragment.SettingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,11 +37,32 @@ class MainActivity : AppCompatActivity() {
 
         var transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.mainFragment, allFragment).commit()
-
+        UserInfo.id = getUserID()
         bottomNavigationView.setOnNavigationItemSelectedListener(clickListener)
         mainFab.setOnClickListener(mainFabClickListener)
         itemFab.setOnClickListener(itemFabClickListener)
         categoryFab.setOnClickListener(categoryFabClickListener)
+    }
+
+    private fun getUserID(): Int{
+        var intentId = intent.getStringExtra("id") ?: "ID"
+        var id = 0
+        CoroutineScope(Dispatchers.IO).launch {
+            id = getUserIdAPI(intentId)
+        }
+        return id
+    }
+
+    private suspend fun getUserIdAPI(id: String): Int{
+        val call: Call<GetID> = DBServiceImpl.service.getUserID(id)
+        var id = 0
+        var job = CoroutineScope(Dispatchers.IO).launch {
+            var result = call.execute()
+            id = result.body()!!.id
+        }
+        job.join()
+
+        return id
     }
 
     private val clickListener: BottomNavigationView.OnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
