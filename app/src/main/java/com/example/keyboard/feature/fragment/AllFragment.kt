@@ -14,6 +14,13 @@ import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.feature.KeyList.KeyListViewAdapter
 
 import com.example.keyboard.R
+import com.example.keyboard.api.DBServiceImpl
+import com.example.keyboard.feature.Singleton.UserInfo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import retrofit2.Call
 
 // TODO: Rename parameter arguments, choose names that match
 
@@ -28,12 +35,17 @@ import com.example.keyboard.R
  */
 class AllFragment : Fragment() {
 
+    private lateinit var data: List<KeyItem>
+    private lateinit var keyListAdapter: KeyListViewAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var data = initData()
-        var keyListAdapter = KeyListViewAdapter(data)
+        runBlocking {
+            data = initData()
+        }
+        keyListAdapter = KeyListViewAdapter(data)
 
         var view = inflater.inflate(R.layout.fragment_all,container,false) // 뷰를 먼저 만들고
         var keyList = view.findViewById(R.id.allList) as RecyclerView
@@ -50,13 +62,18 @@ class AllFragment : Fragment() {
         return view
     }
 
-    private fun initData(): List<KeyItem>{
-        var icon = Icon.createWithResource(context,R.drawable.logo)
-        var temp1 = KeyItem(icon,"네이버","홈페이지")
-        var temp2 = KeyItem(icon,"카카오","SNS")
-        var temp3 = KeyItem(icon, "인스타그램", "SNS")
-        var temp4 = KeyItem(icon, "본스", "피씨방")
-        var data = listOf(temp1,temp2,temp3,temp4)
+    private suspend fun initData(): List<KeyItem>{
+        lateinit var temp:List<KeyItem>
+        val call: Call<List<KeyItem>> = DBServiceImpl.service.getItem(UserInfo.id)
+        var job = CoroutineScope(Dispatchers.IO).launch {
+            var result = call.execute()
+            temp = result.body()!!
+        }
+        job.join()
+        for(item in temp){
+            item.icon = Icon.createWithResource(context,R.drawable.logo)
+        }
+        var data = temp
 
         return data
     }

@@ -10,9 +10,9 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface DBService {
-    @GET("/item/read")
+    @GET("/item/read/{id}")
     fun getItem(
-        @Body item: List<KeyItem>
+        @Path("id") id: Int
     ): Call<List<KeyItem>>
 
     @POST("/item/create")

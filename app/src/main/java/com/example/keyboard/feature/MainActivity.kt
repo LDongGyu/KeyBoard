@@ -47,17 +47,6 @@ class MainActivity : AppCompatActivity() {
         var intentId = intent.getStringExtra("id") ?: "ID"
         val call: Call<GetID> = DBServiceImpl.service.getUserID(intentId)
         var id = 0
-        var job = CoroutineScope(Dispatchers.IO).async {
-            var result = call.execute()
-            id = result.body()!!.id
-        }
-        job.await()
-        return id
-    }
-
-    private suspend fun getUserIdAPI(id: String): Int{
-        val call: Call<GetID> = DBServiceImpl.service.getUserID(id)
-        var id = 0
         var job = CoroutineScope(Dispatchers.IO).launch {
             var result = call.execute()
             id = result.body()!!.id
