@@ -12,6 +12,14 @@ import com.example.keyboard.feature.CategoryList.CategoryListViewAdapter
 import com.example.keyboard.feature.Category.CategoryManageActivity
 
 import com.example.keyboard.R
+import com.example.keyboard.api.DBServiceImpl
+import com.example.keyboard.data.GetCategory
+import com.example.keyboard.feature.Singleton.UserInfo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import retrofit2.Call
 
 /**
  * A simple [Fragment] subclass.
@@ -22,16 +30,20 @@ import com.example.keyboard.R
  * create an instance of this fragment.
  */
 class CategoryFragment : Fragment() {
+    lateinit var data: List<CategoryListItem>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        runBlocking {
+            data = initData()
+        }
+
         var view = inflater.inflate(R.layout.fragment_category, container, false)
         var categoryListView = view.findViewById(R.id.categoryListView) as ExpandableListView
 
-        var data = initData()
+
         var categoryListAdapter = CategoryListViewAdapter(view.context,data)
         categoryListView.setAdapter(categoryListAdapter)
         categoryListView.setOnChildClickListener(childClickListener)
@@ -39,22 +51,28 @@ class CategoryFragment : Fragment() {
         return view
     }
 
-    private fun initData():List<CategoryListItem>{
-        var title1 = "홈페이지"
-        var title2 = "PC방"
-        var title3 = "회사"
+    private suspend fun initData():List<CategoryListItem>{
+        lateinit var temp:List<GetCategory>
+        var data = mutableListOf<CategoryListItem>()
 
+        val call: Call<List<GetCategory>> = DBServiceImpl.service.getCategory(UserInfo.id)
+        var job = CoroutineScope(Dispatchers.IO).launch {
+            var result = call.execute()
+            temp = result.body()!!
+        }
+        job.join()
+        /**
+         * 자식 item 가져오기
+         */
         var content1 = "네이버"
         var content2 = "카카오"
         var content3 = "배민"
         var content4 = "딜리버리히어로즈"
         var childList = listOf(content1,content2,content3,content4)
 
-        var temp1 = CategoryListItem(title1,childList)
-        var temp2 = CategoryListItem(title2,childList)
-        var temp3 = CategoryListItem(title3,childList)
-
-        var data = listOf(temp1,temp2,temp3)
+        for(category in temp){
+            data.add(CategoryListItem(category.category,childList))
+        }
         return data
     }
 

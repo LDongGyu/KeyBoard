@@ -25,7 +25,6 @@ class ItemCreateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_create)
-        Toast.makeText(applicationContext,"${UserInfo.id}",Toast.LENGTH_SHORT).show()
         createBtn.setOnClickListener(itemCreateBtnClickListener)
     }
 
