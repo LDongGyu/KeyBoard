@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
+import com.example.keyboard.data.GetCategory
 import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.feature.MainActivity
@@ -22,6 +23,8 @@ import retrofit2.Call
 
 class ItemCreateActivity : AppCompatActivity() {
 
+    private lateinit var categoryList: MutableList<GetCategory>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_create)
@@ -31,7 +34,14 @@ class ItemCreateActivity : AppCompatActivity() {
     private val itemCreateBtnClickListener: View.OnClickListener = View.OnClickListener {
         CoroutineScope(Dispatchers.IO).launch {
             var icon = Icon.createWithResource(applicationContext,R.drawable.logo)
-            var data = KeyItem(icon,"네이버","홈페이지","id","pw","url","etc")
+            var title = titleEditTxt.text.toString()
+            var category = categorySpinner.selectedItem.toString()
+            var id = idEditTxt.text.toString()
+            var pw = pwEditTxt.text.toString()
+            var url = urlEditTxt.text.toString()
+            var etc = etcEditTxt.text.toString()
+
+            var data = KeyItem(icon,title,category,id,pw,url,etc)
 
             var signUpStatus = itemCreate(data)
 
@@ -47,7 +57,7 @@ class ItemCreateActivity : AppCompatActivity() {
     }
 
     private suspend fun itemCreate(item: KeyItem): String{
-        val call: Call<GetStatus> = DBServiceImpl.service.itemCreate(item)
+        val call: Call<GetStatus> = DBServiceImpl.service.itemCreate(item,UserInfo.id)
         var statusCode = "default"
 
         var job = CoroutineScope(Dispatchers.IO).launch {
