@@ -63,7 +63,7 @@ class ItemCreateActivity : AppCompatActivity() {
             var url = urlEditTxt.text.toString()
             var etc = etcEditTxt.text.toString()
 
-            var data = KeyItem(icon,title,category,id,pw,url,etc)
+            var data = KeyItem(icon,title,category,id,pw,url,etc,UserInfo.id)
 
             var signUpStatus = itemCreate(data)
 
@@ -79,7 +79,7 @@ class ItemCreateActivity : AppCompatActivity() {
     }
 
     private suspend fun itemCreate(item: KeyItem): String{
-        val call: Call<GetStatus> = DBServiceImpl.service.itemCreate(item,UserInfo.id)
+        val call: Call<GetStatus> = DBServiceImpl.service.itemCreate(item)
         var statusCode = "default"
 
         var job = CoroutineScope(Dispatchers.IO).launch {

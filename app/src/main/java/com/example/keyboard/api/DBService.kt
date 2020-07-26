@@ -19,8 +19,7 @@ interface DBService {
 
     @POST("/item/create")
     fun itemCreate(
-        @Body item: KeyItem,
-        @Body id: Int
+        @Body item: KeyItem
     ): Call<GetStatus>
 
     @GET("/category/read/{id}")
