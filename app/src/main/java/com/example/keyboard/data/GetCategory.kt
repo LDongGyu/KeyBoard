@@ -4,5 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GetCategory(
     @SerializedName("title")
-    val category: String
+    val category: String,
+    @SerializedName("etc")
+    val etc: String
 )

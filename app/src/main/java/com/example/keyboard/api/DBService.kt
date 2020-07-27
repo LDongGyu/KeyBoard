@@ -26,7 +26,7 @@ interface DBService {
     fun getCategory(
         @Path("id") id: Int
     ): Call<List<GetCategory>>
-
+    
     @POST("/user/login/{id}/{pw}")
     fun signIn(
         @Path("id") id: String,

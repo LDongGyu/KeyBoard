@@ -15,6 +15,7 @@ import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetCategory
 import com.example.keyboard.feature.Singleton.UserInfo
+import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -71,7 +72,7 @@ class CategoryFragment : Fragment() {
         var childList = listOf(content1,content2,content3,content4)
 
         for(category in temp){
-            data.add(CategoryListItem(category.category,childList))
+            data.add(CategoryListItem(category.category,category.etc,childList))
         }
         return data
     }
