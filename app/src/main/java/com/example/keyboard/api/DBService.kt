@@ -1,15 +1,13 @@
 package com.example.keyboard.api
 
+import com.example.keyboard.data.Category
 import com.example.keyboard.data.GetCategory
 import com.example.keyboard.data.GetID
 import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.CategoryList.CategoryListItem
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface DBService {
     @GET("/item/read/{id}")
@@ -22,11 +20,21 @@ interface DBService {
         @Body item: KeyItem
     ): Call<GetStatus>
 
+    @POST("/item/delete")
+    fun itemDelete(
+        @Body item: KeyItem
+    ): Call<GetStatus>
+
     @GET("/category/read/{id}")
     fun getCategory(
         @Path("id") id: Int
     ): Call<List<GetCategory>>
-    
+
+    @POST("/category/create")
+    fun categoryCreate(
+        @Body category: Category
+    ): Call<GetStatus>
+
     @POST("/user/login/{id}/{pw}")
     fun signIn(
         @Path("id") id: String,

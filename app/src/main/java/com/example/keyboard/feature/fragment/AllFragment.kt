@@ -53,8 +53,14 @@ class AllFragment : Fragment() {
 
         keyListAdapter.setItemClickListener(object : KeyListViewAdapter.ItemClickListener{
             override fun onClick(view: View, position: Int) {
-                startActivity(Intent(context,
-                    ItemManageActivity::class.java))
+                var intent = Intent(context, ItemManageActivity::class.java)
+                intent.putExtra("title",data[position].title)
+                intent.putExtra("category",data[position].categroy)
+                intent.putExtra("id",data[position].id)
+                intent.putExtra("pw",data[position].pw)
+                intent.putExtra("url",data[position].url)
+                intent.putExtra("etc",data[position].etc)
+                startActivity(intent)
             }
         })
         keyList.adapter = keyListAdapter // 데이터 등록하고 return

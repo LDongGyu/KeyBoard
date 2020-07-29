@@ -17,6 +17,6 @@ data class KeyItem(
     var url: String = "url",
     @SerializedName("etc")
     var etc: String = "etc",
-    @SerializedName("userId")
+    @SerializedName("userid")
     var userId: Int = 1
 )
