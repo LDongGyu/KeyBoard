@@ -18,5 +18,7 @@ data class KeyItem(
     @SerializedName("etc")
     var etc: String = "etc",
     @SerializedName("userid")
-    var userId: Int = 1
+    var userId: Int = 1,
+    @SerializedName("beforeTitle")
+    var beforeTitle: String = "카카오"
 )

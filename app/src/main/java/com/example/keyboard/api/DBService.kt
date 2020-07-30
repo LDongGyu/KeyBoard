@@ -20,6 +20,11 @@ interface DBService {
         @Body item: KeyItem
     ): Call<GetStatus>
 
+    @POST("/item/update")
+    fun itemUpdate(
+        @Body item: KeyItem
+    ): Call<GetStatus>
+
     @POST("/item/delete")
     fun itemDelete(
         @Body item: KeyItem
