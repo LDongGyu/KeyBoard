@@ -8,5 +8,5 @@ data class Category(
     @SerializedName("etc")
     val etc: String,
     @SerializedName("id")
-    val id: Int
+    val id: Int // userid
 )

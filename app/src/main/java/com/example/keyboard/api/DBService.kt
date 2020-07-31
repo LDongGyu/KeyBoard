@@ -40,6 +40,11 @@ interface DBService {
         @Body category: Category
     ): Call<GetStatus>
 
+    @POST("/category/delete")
+    fun categoryDelete(
+        @Body item: Category
+    ): Call<GetStatus>
+
     @POST("/user/login/{id}/{pw}")
     fun signIn(
         @Path("id") id: String,
