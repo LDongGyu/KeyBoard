@@ -105,10 +105,11 @@ class ItemCreateActivity : AppCompatActivity() {
         lateinit var result: List<GetCategory>
 
         var call:Call<List<GetCategory>> = DBServiceImpl.service.getCategory(UserInfo.id)
-        CoroutineScope(Dispatchers.IO).launch {
+        var job = CoroutineScope(Dispatchers.IO).launch {
             var response = call.execute()
             result = response.body()!!
         }
+        job.join()
 
         return result
     }
