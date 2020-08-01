@@ -1,10 +1,7 @@
 package com.example.keyboard.api
 
-import com.example.keyboard.data.Category
-import com.example.keyboard.data.GetCategory
-import com.example.keyboard.data.GetID
+import com.example.keyboard.data.*
 import com.example.keyboard.feature.KeyList.KeyItem
-import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.CategoryList.CategoryListItem
 import retrofit2.Call
 import retrofit2.http.*
@@ -71,4 +68,9 @@ interface DBService {
     fun getUserID(
         @Path("id") id: String
     ): Call<GetID>
+
+    @POST("/user/pwchange")
+    fun pwChange(
+        @Body data: PwChange
+    ): Call<GetStatus>
 }
