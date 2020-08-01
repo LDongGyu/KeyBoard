@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.keyboard.R
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.mainFragment, allFragment).commit()
         runBlocking {
             UserInfo.id = getUserID()
+            Log.d("login","${UserInfo.id}")
         }
         bottomNavigationView.setOnNavigationItemSelectedListener(clickListener)
         mainFab.setOnClickListener(mainFabClickListener)
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         var job = CoroutineScope(Dispatchers.IO).launch {
             var result = call.execute()
             id = result.body()!!.id
+            Log.d("login","get ${id}")
         }
         job.join()
         return id

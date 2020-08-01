@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
+import com.example.keyboard.data.GetCategory
 import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.feature.Singleton.UserInfo
@@ -19,10 +20,7 @@ import kotlinx.android.synthetic.main.activity_item_create.pwEditTxt
 import kotlinx.android.synthetic.main.activity_item_create.titleEditTxt
 import kotlinx.android.synthetic.main.activity_item_create.urlEditTxt
 import kotlinx.android.synthetic.main.activity_item_manage.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import retrofit2.Call
 
 class ItemManageActivity : AppCompatActivity() {
@@ -145,10 +143,26 @@ class ItemManageActivity : AppCompatActivity() {
 
     private fun getCategory(): ArrayAdapter<String> {
         var spinnerAdapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item)
-        spinnerAdapter.add("네이버 가자")
-        spinnerAdapter.add("카카오 가자")
-
+        var temp =  runBlocking {
+            getCategoryAPI()
+        }
+        for(category in temp){
+            spinnerAdapter.add(category.category)
+        }
         return spinnerAdapter
+    }
+
+    private suspend fun getCategoryAPI(): List<GetCategory>{
+        lateinit var result: List<GetCategory>
+
+        var call:Call<List<GetCategory>> = DBServiceImpl.service.getCategory(UserInfo.id)
+        var job = CoroutineScope(Dispatchers.IO).launch {
+            var response = call.execute()
+            result = response.body()!!
+        }
+        job.join()
+
+        return result
     }
 
 }

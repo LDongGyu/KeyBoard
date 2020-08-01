@@ -30,8 +30,7 @@ class ItemCreateActivity : AppCompatActivity() {
         runBlocking {
             categoryList = initCategoryList()
         }
-        var adapter = ArrayAdapter<String>(applicationContext,android.R.layout.simple_spinner_dropdown_item,categoryList)
-        categorySpinner.adapter = adapter
+        categorySpinner.adapter = getCategory()
         createBtn.setOnClickListener(itemCreateBtnClickListener)
     }
 
@@ -89,5 +88,28 @@ class ItemCreateActivity : AppCompatActivity() {
         job.join()
 
         return statusCode
+    }
+
+    private fun getCategory(): ArrayAdapter<String> {
+        var spinnerAdapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item)
+        var temp =  runBlocking {
+            getCategoryAPI()
+        }
+        for(category in temp){
+            spinnerAdapter.add(category.category)
+        }
+        return spinnerAdapter
+    }
+
+    private suspend fun getCategoryAPI(): List<GetCategory>{
+        lateinit var result: List<GetCategory>
+
+        var call:Call<List<GetCategory>> = DBServiceImpl.service.getCategory(UserInfo.id)
+        CoroutineScope(Dispatchers.IO).launch {
+            var response = call.execute()
+            result = response.body()!!
+        }
+
+        return result
     }
 }
