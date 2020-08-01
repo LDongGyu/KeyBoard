@@ -30,6 +30,11 @@ interface DBService {
         @Body item: KeyItem
     ): Call<GetStatus>
 
+    @POST("/item/read/child")
+    fun childItemRead(
+        @Body category: Category
+    ): Call<List<KeyItem>>
+
     @GET("/category/read/{id}")
     fun getCategory(
         @Path("id") id: Int

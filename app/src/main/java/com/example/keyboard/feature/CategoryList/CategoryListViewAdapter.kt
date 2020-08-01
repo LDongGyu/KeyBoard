@@ -53,7 +53,7 @@ class CategoryListViewAdapter(var context: Context, var datas: List<CategoryList
         val view = inflater.inflate(R.layout.category_child_item,p4,false)
         var itemTxt = view.findViewById(R.id.itemTxt) as TextView
 
-        itemTxt.text = datas.get(p0).child.get(p1)
+        itemTxt.text = datas.get(p0).child.get(p1).title
 
         return view
     }
