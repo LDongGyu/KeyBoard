@@ -15,6 +15,7 @@ import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.Category
 import com.example.keyboard.data.GetCategory
+import com.example.keyboard.feature.Item.ItemManageActivity
 import com.example.keyboard.feature.KeyList.KeyItem
 import com.example.keyboard.feature.Singleton.UserInfo
 import kotlinx.android.synthetic.main.fragment_category.*
@@ -82,8 +83,13 @@ class CategoryFragment : Fragment() {
     }
 
     private val childClickListener : ExpandableListView.OnChildClickListener = ExpandableListView.OnChildClickListener { expandableListView, view, i, i2, l ->
-        startActivity(Intent(context,
-            CategoryManageActivity::class.java))
+        var intent = Intent(context, ItemManageActivity::class.java)
+        intent.putExtra("title",data[i].child[i2].title)
+        intent.putExtra("id",data[i].child[i2].id)
+        intent.putExtra("pw",data[i].child[i2].pw)
+        intent.putExtra("url",data[i].child[i2].url)
+        intent.putExtra("etc",data[i].child[i2].etc)
+        startActivity(intent)
         return@OnChildClickListener false
     }
 
