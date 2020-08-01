@@ -3,10 +3,10 @@ package com.example.keyboard.data
 import com.google.gson.annotations.SerializedName
 
 data class PwChange(
-    @SerializedName("userid")
+    @SerializedName("userId")
     var id: Int,
-    @SerializedName("currentpw")
+    @SerializedName("currentPw")
     var currentPw: String,
-    @SerializedName("newpw")
+    @SerializedName("newPw")
     var newPw: String
 )

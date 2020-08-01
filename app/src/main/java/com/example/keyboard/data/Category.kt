@@ -9,6 +9,6 @@ data class Category(
     val etc: String,
     @SerializedName("id")
     val id: Int, // userid
-    @SerializedName("beforetitle")
+    @SerializedName("beforeTitle")
     val beforetitle: String = ""
 )
