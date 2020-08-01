@@ -21,10 +21,16 @@ import retrofit2.Call
 class CategoryManageActivity : AppCompatActivity() {
 
     private var isCanChange = true
+    private var beforeCategory = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_manage)
+        beforeCategory = intent.getStringExtra("category")
+        var beforeEtc = intent.getStringExtra("etc")
+
+        titleEditTxt.setText(beforeCategory)
+        etcEditTxt.setText(beforeEtc)
 
         saveBtn.setOnClickListener(saveBtnClickListener)
         editBtn.setOnClickListener(editBtnClickListener)
@@ -35,7 +41,7 @@ class CategoryManageActivity : AppCompatActivity() {
         var category = titleEditTxt.text.toString()
         var etc = etcEditTxt.text.toString()
 
-        var data = Category(category,etc,UserInfo.id)
+        var data = Category(category,etc,UserInfo.id,beforeCategory)
         CoroutineScope(Dispatchers.IO).launch {
             var statusCode = updateCategory(data)
 
