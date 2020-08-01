@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetStatus
+import com.example.keyboard.data.ID
 import com.example.keyboard.feature.MainActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.idEditTxt
@@ -32,10 +33,10 @@ class SignUpActivity : AppCompatActivity() {
 
     private val signUpBtnClickListener: View.OnClickListener = View.OnClickListener {
         var id = idEditTxt.text.toString()
-        var pw = pwEditTxt.text.toString()
-
+        var pw = pwEditTxt.text.toString().toMD5()
+        var data = ID(id,pw)
         CoroutineScope(Dispatchers.IO).launch {
-            var signUpStatus = signUp(id,pw)
+            var signUpStatus = signUp(data)
 
             Log.d("signUpLog","${id}, ${pw}, ${signUpStatus}")
             if(signUpStatus.equals("success")){
@@ -51,8 +52,8 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-    private suspend fun signUp(id: String, pw: String): String{
-        val call: Call<GetStatus> = DBServiceImpl.service.signUp(id,pw.toMD5())
+    private suspend fun signUp(data: ID): String{
+        val call: Call<GetStatus> = DBServiceImpl.service.signUp(data)
         var statusCode = "default"
 
         var job = CoroutineScope(Dispatchers.IO).launch {

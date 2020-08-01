@@ -71,7 +71,7 @@ class CategoryFragment : Fragment() {
         var content1 = "네이버"
         var content2 = "카카오"
         var content3 = "배민"
-        var content4 = "딜리버리히어로즈"
+        var content4 = "딜리버리히어로즈"s
 //        var childList  = listOf(content1,content2,content3,content4)
 
         for(category in temp){

@@ -52,16 +52,14 @@ interface DBService {
         @Body item: Category
     ): Call<GetStatus>
 
-    @POST("/user/login/{id}/{pw}")
+    @POST("/user/signIn")
     fun signIn(
-        @Path("id") id: String,
-        @Path("pw") pw: String
+        @Body data: ID
     ): Call<GetStatus>
 
     @POST("/user/signUp")
     fun signUp(
-        @Path("id") id: String,
-        @Path("pw") pw: String
+        @Body data: ID
     ): Call<GetStatus>
 
     @GET("/user/{id}")

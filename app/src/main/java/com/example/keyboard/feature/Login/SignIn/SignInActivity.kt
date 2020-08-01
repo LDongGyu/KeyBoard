@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetStatus
+import com.example.keyboard.data.ID
 import com.example.keyboard.feature.MainActivity
 import com.example.keyboard.feature.Login.SignUp.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -38,10 +39,10 @@ class SignInActivity : AppCompatActivity() {
 
     private val signInBtnClickListener: View.OnClickListener = View.OnClickListener {
         var id = idEditTxt.text.toString()
-        var pw = pwEditTxt.text.toString()
-
+        var pw = pwEditTxt.text.toString().toMD5()
+        var data = ID(id,pw)
         CoroutineScope(IO).launch {
-            var loginStatus = login(id,pw)
+            var loginStatus = login(data)
 
             Log.d("loginLog","${id}, ${pw}, ${loginStatus}")
             if(loginStatus.equals("success")){
@@ -58,8 +59,8 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun login(id: String, pw: String): String{
-        val call: Call<GetStatus> = DBServiceImpl.service.signIn(id,pw.toMD5())
+    private suspend fun login(data: ID): String{
+        val call: Call<GetStatus> = DBServiceImpl.service.signIn(data)
         var statusCode = "default"
 
         var job = CoroutineScope(IO).launch {
