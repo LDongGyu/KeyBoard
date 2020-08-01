@@ -26,8 +26,41 @@ class CategoryManageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_manage)
 
+        saveBtn.setOnClickListener(saveBtnClickListener)
         editBtn.setOnClickListener(editBtnClickListener)
         deleteBtn.setOnClickListener(deleteBtnClickListener)
+    }
+
+    private val saveBtnClickListener: View.OnClickListener = View.OnClickListener {
+        var category = titleEditTxt.text.toString()
+        var etc = etcEditTxt.text.toString()
+
+        var data = Category(category,etc,UserInfo.id)
+        CoroutineScope(Dispatchers.IO).launch {
+            var statusCode = updateCategory(data)
+
+            if(statusCode.equals("success")){
+                finish()
+            }
+            else{
+                withContext(Dispatchers.Main){
+                    Toast.makeText(applicationContext,"카테고리 업데이트에 실패하였습니다.",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private suspend fun updateCategory(item: Category): String{
+        var call: Call<GetStatus> = DBServiceImpl.service.categoryUpdate(item)
+        var statusCode = "default"
+
+        var job = CoroutineScope(Dispatchers.IO).launch {
+            var result = call.execute()
+            statusCode = result.body()!!.status
+        }
+        job.join()
+
+        return statusCode
     }
 
     private val editBtnClickListener: View.OnClickListener = View.OnClickListener {
