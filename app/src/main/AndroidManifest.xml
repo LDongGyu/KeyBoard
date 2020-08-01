@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.SignUp.SignUpActivity"></activity>
+        <activity android:name=".feature.CategoryList.CategoryManageList"></activity>
+        <activity android:name=".feature.SignUp.SignUpActivity" />
         <activity android:name=".feature.Category.CategoryManageActivity" />
         <activity android:name=".feature.Item.ItemManageActivity" />
         <activity android:name=".feature.Category.CategoryCreateActivity" />

@@ -4,14 +4,38 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:text="setting"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃"
+        android:textSize="14dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/changePwBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 변경"
+        android:textSize="14dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@id/logoutBtn"
+        app:layout_constraintEnd_toStartOf="@id/categoryEditBtn"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/categoryEditBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카테고리 수정"
+        android:textSize="14dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
