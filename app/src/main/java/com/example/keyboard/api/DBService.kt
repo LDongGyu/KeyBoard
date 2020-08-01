@@ -67,7 +67,7 @@ interface DBService {
         @Path("id") id: String
     ): Call<GetID>
 
-    @POST("/user/pwchange")
+    @POST("/user/pwChange")
     fun pwChange(
         @Body data: PwChange
     ): Call<GetStatus>
