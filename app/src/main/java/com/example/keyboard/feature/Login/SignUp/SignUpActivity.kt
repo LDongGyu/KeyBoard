@@ -1,4 +1,4 @@
-package com.example.keyboard.feature.SignUp
+package com.example.keyboard.feature.Login.SignUp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

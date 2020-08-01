@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.keyboard.R
-import com.example.keyboard.feature.SignIn.SignInActivity
+import com.example.keyboard.feature.Login.SignIn.SignInActivity
 
 class SplashActivity : AppCompatActivity() {
 

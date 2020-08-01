@@ -12,13 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.CategoryList.CategoryManageList"></activity>
-        <activity android:name=".feature.SignUp.SignUpActivity" />
+        <activity android:name=".feature.Category.CategoryListActivity"></activity>
+        <activity android:name=".feature.Login.ChangePwActivity" />
+        <activity android:name=".feature.CategoryList.CategoryManageList" />
+        <activity android:name=".feature.Login.SignUp.SignUpActivity" />
         <activity android:name=".feature.Category.CategoryManageActivity" />
         <activity android:name=".feature.Item.ItemManageActivity" />
         <activity android:name=".feature.Category.CategoryCreateActivity" />
         <activity android:name=".feature.Item.ItemCreateActivity" />
-        <activity android:name=".feature.SignIn.SignInActivity" />
+        <activity android:name=".feature.Login.SignIn.SignInActivity" />
         <activity android:name=".feature.MainActivity" />
         <activity android:name=".feature.SplashActivity">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.example.keyboard.feature.SignIn
+package com.example.keyboard.feature.Login.SignIn
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ import com.example.keyboard.R
 import com.example.keyboard.api.DBServiceImpl
 import com.example.keyboard.data.GetStatus
 import com.example.keyboard.feature.MainActivity
-import com.example.keyboard.feature.SignUp.SignUpActivity
+import com.example.keyboard.feature.Login.SignUp.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
